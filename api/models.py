@@ -63,6 +63,6 @@ class Enrollment(models.Model):
 
 class OfficeAssignment(models.Model):
     instructor = models.OneToOneField(
-        Instructor, on_delete=models.CASCADE, primary_key=True
+        Instructor, on_delete=models.CASCADE, primary_key=True, related_name="office"
     )
     location = models.CharField(max_length=150)
