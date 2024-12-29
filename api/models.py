@@ -31,7 +31,7 @@ class Course(models.Model):
 
     # relations
     department = models.ForeignKey(
-        Department, on_delete=models.RESTRICT, related_name="department"
+        Department, on_delete=models.RESTRICT, related_name="courses"
     )
     instructors = models.ManyToManyField(Instructor, related_name="courses")
 
