@@ -50,7 +50,7 @@ class Enrollment(models.Model):
         ("D", "D"),
         ("F", "F"),
     ]
-    grade = models.CharField(max_length=1, choices=GRADE_CHOICES)
+    grade = models.CharField(max_length=1, choices=GRADE_CHOICES, null=True)
 
     # relations
     course = models.ForeignKey(
