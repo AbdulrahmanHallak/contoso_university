@@ -4,7 +4,7 @@ from rest_framework.exceptions import NotFound
 from django.shortcuts import get_object_or_404
 
 from api.models import Department, Instructor
-from .serializers import DepartmentSerializer, InstructorSerializer
+from .serializers import DepartmentSerializer, DepartmentInstructorSerializer
 
 
 class DepartmentViewSet(viewsets.ModelViewSet):
@@ -19,7 +19,7 @@ class DepartmentAdminViewSet(
     viewsets.GenericViewSet,
 ):
     queryset = Instructor.objects.all()
-    serializer_class = InstructorSerializer
+    serializer_class = DepartmentInstructorSerializer
 
     def destroy(self, request, *args, **kwargs):
         department_id = kwargs.get("pk")
@@ -41,5 +41,5 @@ class DepartmentAdminViewSet(
         except Instructor.DoesNotExist:
             raise NotFound()
 
-        serializer = InstructorSerializer(admin)
+        serializer = DepartmentInstructorSerializer(admin)
         return Response(serializer.data)
