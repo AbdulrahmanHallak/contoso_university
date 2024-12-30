@@ -6,5 +6,6 @@ urlpatterns = [
     # path("department/<int:pk>/course/", views.CourseListCreateView.as_view()),
     path("student/", include("api.student.urls")),
     path("department/", include("api.department.urls")),
+    path("course/", include("api.department.urls")),
     path("instructor/", include("api.instructor.urls")),
 ]
