@@ -1,12 +1,12 @@
 from rest_framework import serializers
 
-from api.models import Instructor, OfficeAssignment
+from api.models import Course, Instructor, OfficeAssignment
 
 
 class OfficeAssignmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = OfficeAssignment
-        fields = ["location"]
+        fields = ["instructor_id", "location"]
 
 
 class InstructorSerializer(serializers.ModelSerializer):
@@ -15,3 +15,9 @@ class InstructorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Instructor
         fields = "__all__"
+
+
+class InstructorCoursesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Course
+        fields = ["id", "title", "credits"]
