@@ -1,21 +1,16 @@
 from rest_framework import serializers
 
-from ..models import Student, Course
+from api.models import Enrollment, Student, Course
 
 
 class StudentCoursesSerializer(serializers.ModelSerializer):
-    # students = serializers.SerializerMethodField()
-
     class Meta:
         model = Course
         fields = ["id", "title", "credits"]
 
-    # def get_students(self, obj):
-    #     return obj.enrollments.count()
-
 
 class StudentDetailsSerializer(serializers.ModelSerializer):
-    courses = serializers.SerializerMethodField(read_only=True)
+    courses = serializers.SerializerMethodField()
 
     class Meta:
         model = Student
@@ -36,3 +31,9 @@ class StudentSerializer(serializers.ModelSerializer):
 
     def get_courses(self, obj):
         return obj.enrollments.count()
+
+
+class EnrollmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Enrollment
+        fields = "__all__"
